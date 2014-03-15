@@ -153,6 +153,7 @@
         dualListbox.elements['select'+selectIndex].append($item.clone(true).prop('selected', $item.data('_selected')));
       }
       dualListbox.element.find('option').eq($item.data('original-index')).data('filtered'+selectIndex, isFiltered);
+      dualListbox.elements['select' + selectIndex].find('option').eq($item.data('original-index')).data('filtered'+selectIndex, isFiltered);
     });
 
     refreshInfo(dualListbox);
@@ -637,6 +638,9 @@
         refreshSelects(this);
       }
       return this.element;
+    },
+    getContainer: function() {
+      return this.container;
     },
     refresh: function(mustClearSelections) {
       updateSelectionStates(this);
